@@ -1,7 +1,7 @@
 		Wrap anything you want to be processed between the tag pairs. 
 		This will strip out all tags automatically and do a limit on words after.
 
-		{exp:excerpt limit="50"}text you want processed{/exp:word_limit}
+		{exp:excerpt limit="50"}text you want processed{/exp:excerpt}
 
 		Note:  The "limit" parameter lets you specify the number of words.
 
