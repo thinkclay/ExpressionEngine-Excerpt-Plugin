@@ -2,7 +2,7 @@
 
 $plugin_info = array(
   'pi_name'        => 'Excerpt',
-  'pi_version'     => '1.0.0',
+  'pi_version'     => '1.0.1',
   'pi_author'      => 'Clayton McIlrath',
   'pi_author_url'  => 'http://thinkclay.com/',
   'pi_description' => 'Limits the number of words in some text, after stripping tags.',
@@ -29,16 +29,17 @@ Class Excerpt {
         $this->EE =& get_instance();
 
     	$limit	= 	( ! $this->EE->TMPL->fetch_param('limit')) ? '500' : $this->EE->TMPL->fetch_param('limit');
+    	$indicator = $this->EE->TMPL->fetch_param('indicator');
     	$text	= 	$this->EE->TMPL->tagdata;
     
     	if ( ! is_numeric($limit)) 
     		$limit = 500;
                 
-		$this->return_data = $this->clean($text, $limit);
+		$this->return_data = $this->clean($text, $limit, $indicator);
     }
 
     
-    function clean($str, $limit)
+    function clean($str, $limit, $indicator)
     {
 		
 		$str = strip_tags($str);
@@ -59,11 +60,11 @@ Class Excerpt {
 		      
         for ($i = 0; $i < $limit; $i++) 
         {
-			if (isset($word[$i])) 
-				$output .= $word[$i]." ";
+    			if (isset($word[$i])) 
+    				$output .= $word[$i]." ";
         }
 
-        return trim($output); 
+        return trim($output) . $indicator; 
     }
 
 
@@ -85,10 +86,21 @@ Class Excerpt {
 		{exp:excerpt limit="50"}text you want processed{/exp:word_limit}
 
 		Note:  The "limit" parameter lets you specify the number of words.
+		
+		The indicator parameter can be used to append characters onto the end of the content, if it has been limited.
+		
+		For example: 
+		
+		{exp:excerpt limit="5" indicator="..."}This content is five words long{/exp:excerpt}
+		
+		Will be: This content is five words...
+		
+		
 
-		Version 1.0
+		Version 1.0.1
 		******************
 		- Initial release
+		- Added indicator parameter
 
 		<?php
 		$buffer = ob_get_contents();
