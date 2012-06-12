@@ -31,7 +31,7 @@ Class Excerpt {
 
     	$this->indicator  = $this->EE->TMPL->fetch_param('indicator', '');
     	$this->limit      = $this->EE->TMPL->fetch_param('limit', 500);
-    	$this->limit_type = $this->EE->TMPL->fetch_param('type', 'words');
+    	$this->limit_type = $this->EE->TMPL->fetch_param('limit_type', 'words');
     	
 		// cleanup limit parameter
     	if (!is_numeric($this->limit))
