@@ -13,11 +13,11 @@ $plugin_info = array(
 /**
  * Excerpt Class
  *
- * @package			ExpressionEngine
- * @category		Plugin
- * @author			Clayton McIlrath
- * @copyright		Copyright (c) 2010, Chosen, LLC.
- * @link			NA
+ * @package     ExpressionEngine
+ * @category    Plugin
+ * @author      Clayton McIlrath
+ * @copyright   Copyright (c) 2012, Clay McIlrath
+ * @link        NA
  */
  
 Class Excerpt {
